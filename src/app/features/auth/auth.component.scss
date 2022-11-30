@@ -1,0 +1,12 @@
+.container{
+  height: 100vh;
+  .card{
+    max-width: 70%;
+    width: fit-content;
+    max-height: 80vh;
+    padding: 20px;
+    border:none;
+    border-radius:30px ;
+    box-shadow: 0px 0px 30px rgb(211, 211, 211);
+  }
+}

@@ -1,0 +1,206 @@
+<div class="p-5 text-center">
+  <div>
+    <div class="text-start font-26 fw-600">Sign Up!</div>
+    <div></div>
+    <form class="mt-5" [formGroup]="form">
+      <div class="d-flex">
+        <div class="flex-fill">
+          <div class="form-box me-2">
+            <img src="assets/images/onboarding/user.png" alt="" class="me-2" />
+            <input
+              formControlName="firstName"
+              type="text"
+              placeholder=" First Name"
+              class="form-field"
+            />
+          </div>
+          <div
+            class="font-12 text-danger text-start ms-4"
+            *ngIf="
+              !form.get('firstName')?.valid &&
+              form.get('firstName')?.touched &&
+              !form.get('firstName')?.value
+            "
+          >
+            First Name required
+          </div>
+        </div>
+        <div class="flex-fill">
+          <div class="form-box ms-2">
+            <img src="assets/images/onboarding/user.png" alt="" class="me-2" />
+            <input
+              formControlName="lastName"
+              type="text"
+              placeholder=" Last Name"
+              class="form-field"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="d-flex">
+        <div class="flex-fill">
+          <div class="form-box me-2">
+            <img src="assets/images/onboarding/email.png" alt="" class="me-2" />
+            <input
+              formControlName="email"
+              type="text"
+              placeholder=" Email"
+              class="form-field"
+            />
+          </div>
+          <div
+            class="font-12 text-danger text-start ms-4"
+            *ngIf="
+              !form.get('email')?.valid &&
+              form.get('email')?.touched &&
+              !form.get('email')?.value
+            "
+          >
+            Email required!
+          </div>
+        </div>
+        <div class="flex-fill">
+          <div class="form-box ms-2">
+            <img src="assets/images/onboarding/phone.png" alt="" class="me-2" />
+            <input
+              formControlName="mobile"
+              type="number"
+              placeholder="Mobile Number"
+              class="form-field"
+            />
+          </div>
+          <div
+            class="font-12 text-danger text-start ms-4"
+            *ngIf="
+              !form.get('mobile')?.valid &&
+              form.get('mobile')?.touched &&
+              !form.get('mobile')?.value
+            "
+          >
+            Mobile Number required!
+          </div>
+        </div>
+      </div>
+      <div class="d-flex">
+        <div class="flex-fill">
+          <div class="form-dropdown me-2">
+            <img src="../../../../assets/images/onboarding/world.png" alt="" />
+            <p-dropdown
+              [options]="countries"
+              (onChange)="fetchStates($event.value)"
+              formControlName="country"
+              optionLabel="name"
+              [filter]="true"
+              filterBy="name"
+              placeholder="Country"
+            >
+            </p-dropdown>
+          </div>
+        </div>
+        <div class="flex-fill">
+          <div class="form-dropdown ms-2">
+            <img src="../../../../assets/images/onboarding/world.png" alt="" />
+            <p-dropdown
+              [options]="states"
+              (onChange)="selectedState = $event.value"
+              formControlName="state"
+              placeholder="State"
+            >
+            </p-dropdown>
+          </div>
+        </div>
+      </div>
+      <div class="d-flex">
+        <div class="flex-fill">
+          <div class="form-box me-2">
+            <img src="assets/images/onboarding/key.png" alt="" class="me-2" />
+            <input
+              #password1
+              formControlName="password"
+              type="password"
+              placeholder="Password"
+              class="form-field"
+            />
+            <img
+              (click)="isShow1 = true; password1.type = 'text'"
+              *ngIf="!isShow1"
+              src="assets/images/onboarding/eye-open.png"
+              alt=""
+              class="pointer"
+            />
+            <img
+              (click)="isShow1 = false; password1.type = 'password'"
+              *ngIf="isShow1"
+              src="assets/images/onboarding/eye-close.png"
+              alt=""
+              class="pointer"
+            />
+          </div>
+          <div
+            class="font-12 text-danger text-start ms-4"
+            *ngIf="
+              !form.get('password')?.valid &&
+              form.get('password')?.touched &&
+              !form.get('password')?.value
+            "
+          >
+            Password required!
+          </div>
+        </div>
+        <div class="flex-fill">
+          <div class="form-box ms-2">
+            <img src="assets/images/onboarding/key.png" alt="" class="me-2" />
+            <input
+              #password2
+              formControlName="cPassword"
+              type="password"
+              placeholder="Confirm Password"
+              class="form-field"
+            />
+            <img
+              (click)="isShow2 = true; password2.type = 'text'"
+              *ngIf="!isShow2"
+              src="assets/images/onboarding/eye-open.png"
+              alt=""
+              class="pointer"
+            />
+            <img
+              (click)="isShow2 = false; password2.type = 'password'"
+              *ngIf="isShow2"
+              src="assets/images/onboarding/eye-close.png"
+              alt=""
+              class="pointer"
+            />
+          </div>
+          <div
+            class="font-12 text-danger text-start ms-4"
+            *ngIf="
+              !form.get('cPassword')?.valid &&
+              form.get('cPassword')?.touched &&
+              !form.get('cPassword')?.value
+            "
+          >
+            Confirm Password required!
+          </div>
+          <div
+            class="font-12 text-danger text-start ms-4"
+            *ngIf="
+              form.get('cPassword')?.valid &&
+              form.get('cPassword')?.touched &&
+              form.get('cPassword')?.value &&
+              form.get('password')?.value !== form.get('cPassword')?.value
+            "
+          >
+            Password doesn't match!
+          </div>
+        </div>
+      </div>
+    </form>
+    <button class="theme-btn hover mt-4" (click)="submit()">Sign Up</button>
+    <div class="font-14 mt-3">
+      Already register?
+      <b class="text-primary pointer" routerLink="../sign-in">Sign In</b>
+    </div>
+    <div></div>
+  </div>
+</div>

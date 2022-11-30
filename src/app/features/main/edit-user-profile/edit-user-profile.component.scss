@@ -1,0 +1,34 @@
+:host::ng-deep .p-dropdown {
+  min-width: 160px;
+  background-color: #f0f0f0;
+  border: none;
+  outline: none;
+  border-radius: 20px;
+  text-align: left;
+  font-size: 13px;
+  &::placeholder {
+    font-size: 13px;
+  }
+  .p-dropdown-label.p-placeholder{
+    font-size: 14px;
+  }
+  .p-dropdown-label{
+    font-size: 13px;
+  }
+}
+
+.form-dropdown {
+  padding-left: 20px;
+  margin-top: 8px;
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+  background-color: #f0f0f0;
+  width: 100%;
+  border-radius: 20px;
+  img {
+    width: 16px;
+    height: 16px;
+  }
+}
+
